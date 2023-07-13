@@ -1,0 +1,91 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://FetchDetails.SOAP"
+           xmlns:tns="http://FetchDetails.SOAP" elementFormDefault="qualified">
+
+    <xs:element name="PersonalDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pdId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PersonalDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="personalDetails" type="tns:Personal"/>
+                <xs:element name="bankDetails" type="tns:Bank"/>
+                <xs:element name="employmentDetails" type="tns:Employment"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addPersonalDetailsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pdId" type="xs:int"/>
+                <xs:element name="fullname" type="xs:string"/>
+                <xs:element name="dateofbirth" type="xs:string"/>
+                <xs:element name="mobile" type="xs:string"/>
+                <xs:element name="email" type="xs:string"/>
+                <xs:element name="city" type="xs:string"/>
+                <xs:element name="maritalstatus" type="xs:string"/>
+                <xs:element name="employmentDetails" type="tns:Employment"/>
+                <xs:element name="bankDetails" type="tns:Bank"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="addPersonalDetailsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="personalDetails" type="tns:Personal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Personal">
+        <xs:sequence>
+            <xs:element name="pdId" type="xs:int"/>
+            <xs:element name="fullname" type="xs:string"/>
+            <xs:element name="dateofbirth" type="xs:string"/>
+            <xs:element name="mobile" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="maritalstatus" type="xs:string"/>
+            <xs:element name="employmentDetails" type="tns:Employment"/>
+            <xs:element name="bankDetails" type="tns:Bank"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Employment">
+        <xs:sequence>
+<!--            <xs:element name="ed_id" type="xs:int"/>-->
+            <xs:element name="company" type="xs:string"/>
+            <xs:element name="startdate" type="xs:string"/>
+            <xs:element name="experience" type="xs:int"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="location" type="xs:string"/>
+            <xs:element name="salary" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Bank">
+        <xs:sequence>
+<!--            <xs:element name="bd_id" type="xs:int"/>-->
+            <xs:element name="bank" type="xs:string"/>
+            <xs:element name="branch" type="xs:string"/>
+            <xs:element name="accountnumber" type="xs:int"/>
+            <xs:element name="accounttype" type="xs:string"/>
+            <xs:element name="ifscCode" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
